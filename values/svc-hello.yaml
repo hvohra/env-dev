@@ -1,0 +1,6 @@
+# The only file a service team touches: image digest, replicas, env vars.
+image:
+  digest: sha256:50633db7ac7ddbc6d1b3776ba6bf5343d7a1403b5d372f2afc337a7709629447
+replicaCount: 2
+env:
+  APP_ENV: dev

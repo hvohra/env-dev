@@ -1,0 +1,5 @@
+# The only knobs a service can set. Everything else is fixed in the templates,
+# and values.schema.json rejects any attempt to set another key.
+registry: ghcr.io/hvohra
+replicaCount: 2
+env: {}

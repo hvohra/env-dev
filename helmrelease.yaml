@@ -1,0 +1,27 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: svc-hello
+spec:
+  releaseName: svc-hello
+  interval: 1m
+  chart:
+    spec:
+      chart: ./charts/app
+      # Rebuild the chart artifact on every git revision, not only when the
+      # chart version is bumped.
+      reconcileStrategy: Revision
+      sourceRef:
+        kind: GitRepository
+        name: env-dev
+        namespace: flux-system
+  valuesFrom:
+    - kind: ConfigMap
+      name: svc-hello-values
+      valuesKey: svc-hello.yaml
+  install:
+    remediation:
+      retries: 2
+  upgrade:
+    remediation:
+      retries: 2
